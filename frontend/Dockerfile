@@ -1,0 +1,17 @@
+FROM node
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+ARG REACT_APP_HOST_IP_ADDRESS
+
+ENV REACT_APP_HOST_IP_ADDRESS $REACT_APP_HOST_IP_ADDRESS
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
